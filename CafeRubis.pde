@@ -28,11 +28,54 @@ void printProducts()
     println(p);
   }
 }
-float header = height * 0.8; //80 
+float space = height * 0.8; //80
+float gap = width * 0.5; 
+float rectx = width * 2;
+float recty = width * 0.5;
 
 void displayProudcts()
 {
+  fill(0);
+  textSize(width * 0.05);
+  textAlign(CENTER);
+  text("Cafe Rubis Till System",width/2,space/2);
   stroke(0);
-  line(width/2, 0+header, width/2,height-header);
-  println(header);
+  line(width/2, space, width/2,height-space);
+  noFill();
+  for(int i = 0; i < products.size(); i++)
+  {
+    fill(255);
+    Product p = products.get(i);
+    float x =map(i,0,7,space,height-space);
+    rect(gap,x,rectx,recty);
+    fill(0);
+    textAlign(LEFT);
+    textSize(16);
+    text(p.name, gap + rectx * 0.02, x + recty /2);
+    textAlign(RIGHT);
+    String price = nf(p.price,1,2);
+    text(price, gap+rectx, x+ recty/2);
+  }  
+  fill(255);
+  rect(width/2+gap,space, width/2 - 2 * gap,height-2 * space);
+  fill(0);
+  textAlign(CENTER);
+  text("Your Bill", width * 0.75, space + height*0.03 );
+}
+
+void mousePressed()
+{ /*
+  for(int i = 0; i < products.size(); i++){
+  float x =map(i,0,7,space,height-space);
+  }
+  if (mouseX > gap && mouseX < gap+rectx && mouseY > x && mouseY < x + recty)
+  {
+    
+  }
+  */
+}
+
+void displayBill()
+{
+  
 }
